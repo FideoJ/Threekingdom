@@ -14,7 +14,8 @@ public class Hero {
   public String work_for;
   public String achievement;
 
-  public Hero() {}
+  public Hero() {
+  }
 
   public Hero(String name, String alias, Bitmap avatar, String gender, String birth_year, String death_year, String native_place, String work_for, String achievement) {
     this.name = name;
@@ -27,3 +28,4 @@ public class Hero {
     this.work_for = work_for;
     this.achievement = achievement;
   }
+}
