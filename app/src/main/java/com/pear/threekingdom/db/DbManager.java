@@ -1,5 +1,6 @@
 package com.pear.threekingdom.db;
 
+import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -40,8 +41,8 @@ public class DbManager {
     }
   }
 
-  public ArrayList<hero> queryAllHeroes() {
-    ArrayList<hero> heroes = new ArrayList<hero>();
+  public ArrayList<Hero> queryAllHeroes() {
+    ArrayList<Hero> heroes = new ArrayList<>();
     Cursor c = db.rawQuery("SELECT * FROM hero", null);
 
     c.moveToFirst();
@@ -60,7 +61,7 @@ public class DbManager {
       hero.work_for = c.getString(c.getColumnIndex("work_for"));
       hero.achievement = c.getString(c.getColumnIndex("achievement"));
 
-      heros.add(hero);
+      heroes.add(hero);
     }
     c.close();
 
