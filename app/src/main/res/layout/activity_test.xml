@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/back_button"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@mipmap/back_icon"
         app:layout_constraintTop_toTopOf="@+id/test_title_bar_background"
         app:layout_constraintBottom_toBottomOf="@+id/test_title_bar_background"
