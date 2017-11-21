@@ -1,0 +1,32 @@
+package com.pear.threekingdom;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import android.graphics.Bitmap;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import com.pear.threekingdom.db.DbManager;
+import com.pear.threekingdom.entity.Hero;
+
+public class MainActivity extends AppCompatActivity {
+  private DbManager db;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    db = new DbManager(this);
+
+    Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+    Bitmap img = Bitmap.createBitmap(100, 100, conf);
+
+    Hero hero = new Hero("吕布", "吕奉先", img, "男", "161", "198",
+                         "五原郡九原县（今内蒙古包头）", "董卓",
+                         "诛杀董卓，击破张燕，大败袁术");
+    db.addOneHero(hero);
+    ArrayList<Hero> heroes = db.queryAllHeroes();
+
+    db.closeDb();
+  }
+}
