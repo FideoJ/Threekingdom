@@ -8,4 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="nameStyle">
+        <item name="android:textColor">@color/nameColor</item>
+        <item name="android:textSize">10pt</item>
+    </style>
+
+    <style name="pinyinStyle">
+        <item name="android:textColor">@color/pinyinColor</item>
+        <item name="android:textSize">7pt</item>
+    </style>
+
+    <style name="genderStyle">
+        <item name="android:textSize">7pt</item>
+        <item name="android:textColor">@color/pinyinColor</item>
+    </style>
+
+    <style name="typeStyle">
+        <item name="android:textSize">7pt</item>
+        <item name="android:textColor">@color/pinyinColor</item>
+    </style>
+
 </resources>
