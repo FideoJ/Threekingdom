@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ThreeKingdom</string>
+    <string name="testTitle">测测你是三国演义中的谁</string>
+    <string name="startTest">开始测试</string>
+    <string name="testIntroduction">!!!!!!!!!!!!##############!!!!!!!!!!!!!!!################!!!!!!!!!!!!!!!!######</string>
 </resources>
