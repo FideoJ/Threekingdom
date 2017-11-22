@@ -121,13 +121,19 @@
                     android:text="别名: " />
                 <TextView
                     style="@style/textStyle1"
-                    android:text="国籍: " />
+                    android:text="性别: " />
                 <TextView
                     style="@style/textStyle1"
-                    android:text="民族: " />
+                    android:text="出生年: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="去世年: " />
                 <TextView
                     style="@style/textStyle1"
                     android:text="出生地: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="效力: " />
                 <TextView
                     style="@style/textStyle1"
                     android:text="主要成就: " />
@@ -138,6 +144,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3.5"
                 android:orientation="vertical"
+                android:visibility="gone"
                 >
                 <TextView
                     android:id="@+id/name"
@@ -148,15 +155,23 @@
                     style="@style/textStyle2"
                     android:gravity="center" />
                 <TextView
-                    android:id="@+id/nation"
+                    android:id="@+id/gender"
                     style="@style/textStyle2"
                     android:gravity="center" />
                 <TextView
-                    android:id="@+id/minzu"
+                    android:id="@+id/birthyear"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/deadyear"
                     style="@style/textStyle2"
                     android:gravity="center" />
                 <TextView
                     android:id="@+id/birthplace"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/workfor"
                     style="@style/textStyle2"
                     android:gravity="center" />
                 <TextView
@@ -170,7 +185,6 @@
                 android:id="@+id/input_layout"
                 android:layout_weight="3.5"
                 android:orientation="vertical"
-                android:visibility="gone"
                >
                 <EditText
                     style="@style/textStyle2"
@@ -180,17 +194,44 @@
                     style="@style/textStyle2"
                     android:id="@+id/nickname_input"
                     android:inputType="text"/>
+                <RadioGroup
+                    android:gravity="center"
+                    android:id="@+id/radioGroupID"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" >
+                    <RadioButton
+                        android:id="@+id/femaleGroupID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        />
+                    <RadioButton
+                        android:checked="true"
+                        android:id="@+id/maleGroupID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="男"/>
+                </RadioGroup>
                 <EditText
                     style="@style/textStyle2"
-                    android:id="@+id/nation_input"
+                    android:id="@+id/gender_input"
                     android:inputType="text"/>
                 <EditText
                     style="@style/textStyle2"
-                    android:id="@+id/minzu_input"
+                    android:id="@+id/birthyear_input"
+                    android:inputType="text"/>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/deadyear_input"
                     android:inputType="text"/>
                 <EditText
                     style="@style/textStyle2"
                     android:id="@+id/birthplace_input"
+                    android:inputType="text"/>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/workfor_input"
                     android:inputType="text"/>
                 <EditText
                     style="@style/textStyle2"

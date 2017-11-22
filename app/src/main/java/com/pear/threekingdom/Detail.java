@@ -7,15 +7,14 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,26 +22,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.jar.Manifest;
+import com.pear.threekingdom.db.DbManager;
+import com.pear.threekingdom.entity.Hero;
+import org.w3c.dom.Text;
 
 /**
  * Created by Young on 2017/11/21.
  */
 public class Detail extends AppCompatActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
-    ImageView edit, save, img, back;
-    LinearLayout detailLayout, inputLayout ;
-    EditText nameInput, nicknameInput, nationInput,
-             minzuInput, birthplaceInput,achievementInput;
-    TextView name, nickname, nation,  minzu, birthplace,
-             achievement, text0, title;
-    Button delete;
-    boolean isEmpty;
-    boolean isEdit;
+    private ImageView edit, save, img, back;
+    private LinearLayout detailLayout, inputLayout ;
+    private EditText nameInput, nicknameInput, genderInput,
+             birthyearInput,deadyearInput, birthplaceInput,workforInput,achievementInput;
+    private TextView name, nickname, gender,
+            birthyear,deadyear, birthplace,workfor,achievement, text0, title;
+    private Button delete;
+    private Bitmap bm;
+    private int heroId;
+    private boolean isEmpty;
+    private boolean isEdit;
+    private DbManager db;
+    private String _gender;
     private static final int IMAGE = 1;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -68,35 +69,45 @@ public class Detail extends AppCompatActivity {
             isEmpty = false;
             name.setText(bundle.getString("name"));
             nickname.setText(bundle.getString("alias"));
+            gender.setText(bundle.getString("gender"));
+            birthyear.setText(bundle.getString("birthyear"));
+            deadyear.setText(bundle.getString("deadyear"));
             birthplace.setText(bundle.getString("native_place"));
-            nation.setText(bundle.getString("work_for"));
-            //minzu.setText(bundle.getString(""));
+            workfor.setText(bundle.getString("work_for"));
             achievement.setText("achievement");
+            bm =  BitmapFactory.decodeByteArray(bundle.getByteArray("img"), 0, bundle.getByteArray("img").length);
+            img.setImageBitmap(bm);
+            heroId = bundle.getInt("hero_id");
         }
-
     }
     void init() {
+        db = new DbManager(this);
         edit = (ImageView)findViewById(R.id.edit);
         save = (ImageView)findViewById(R.id.save);
         detailLayout = (LinearLayout)findViewById(R.id.detail_layout);
         inputLayout = (LinearLayout)findViewById(R.id.input_layout);
         nameInput = (EditText)findViewById(R.id.name_input);
         nicknameInput = (EditText)findViewById(R.id.nickname_input);
-        nationInput = (EditText)findViewById(R.id.nation_input);
-        minzuInput = (EditText)findViewById(R.id.minzu_input);
+        genderInput = (EditText)findViewById(R.id.gender_input);
+        birthyearInput = (EditText)findViewById(R.id.birthyear_input);
+        deadyearInput = (EditText)findViewById(R.id.deadyear_input);
         birthplaceInput = (EditText)findViewById(R.id.birthplace_input);
+        workforInput = (EditText)findViewById(R.id.workfor_input);
         achievementInput = (EditText)findViewById(R.id.achievement_input);
         name = (TextView)findViewById(R.id.name);
         nickname = (TextView)findViewById(R.id.nickname);
-        nation = (TextView)findViewById(R.id.nation);
-        minzu = (TextView)findViewById(R.id.minzu);
+        gender = (TextView)findViewById(R.id.gender);
+        birthyear = (TextView)findViewById(R.id.birthyear);
+        deadyear = (TextView)findViewById(R.id.deadyear);
         birthplace = (TextView)findViewById(R.id.birthplace);
+        workfor = (TextView)findViewById(R.id.workfor);
         achievement = (TextView)findViewById(R.id.achievement);
         delete = (Button)findViewById(R.id.delete);
         img = (ImageView)findViewById(R.id.img);
         text0 = (TextView)findViewById(R.id.text0);
         title = (TextView)findViewById(R.id.title);
         back = (ImageView)findViewById(R.id.back);
+        bm = ((BitmapDrawable) img.getDrawable()).getBitmap();
     }
     //  进入编辑状态
     private void editHero() {
@@ -111,9 +122,11 @@ public class Detail extends AppCompatActivity {
         text0.setVisibility(View.INVISIBLE);
         nameInput.setText(name.getText());
         nicknameInput.setText(nickname.getText());
-        nationInput.setText(nation.getText());
-        minzuInput.setText(minzu.getText());
+        genderInput.setText(gender.getText());
+        birthyearInput.setText(birthyear.getText());
+        deadyearInput.setText(deadyear.getText());
         birthplaceInput.setText(birthplace.getText());
+        workforInput.setText(workfor.getText());
         achievementInput.setText(achievement.getText());
         if (!isEmpty) {
             delete.setVisibility(View.VISIBLE);
@@ -124,12 +137,15 @@ public class Detail extends AppCompatActivity {
     //  保存
     private void saveHero() {
         isEdit = false;
-        CharSequence  _name = nameInput.getText();
-        CharSequence _nickname = nicknameInput.getText();
-        CharSequence _nation = nationInput.getText();
-        CharSequence _minzu = minzuInput.getText();
-        CharSequence _birthplace = birthplaceInput.getText();
-        CharSequence _achievement = achievementInput.getText();
+        String  _name = nameInput.getText().toString();
+        String _nickname = nicknameInput.getText().toString();
+        String _gender = genderInput.getText().toString();
+        String _birthyear = birthyearInput.getText().toString();
+        String _deadyear = deadyearInput.getText().toString();
+        String _birthplace = birthplaceInput.getText().toString();
+        String _workfor = workforInput.getText().toString();
+        String _achievement = achievementInput.getText().toString();
+
         //  只判断是否输入名称
         if (TextUtils.isEmpty(_name)) {
             Toast.makeText(getApplicationContext(), "请输入人物名称", Toast.LENGTH_SHORT).show();
@@ -142,16 +158,21 @@ public class Detail extends AppCompatActivity {
 
             name.setText(_name);
             nickname.setText(_nickname);
-            nation.setText(_nation);
-            minzu.setText(_minzu);
+            gender.setText(_gender);
+            birthyear.setText(_birthyear);
+            deadyear.setText(_deadyear);
             birthplace.setText(_birthplace);
+            workfor.setText(_workfor);
             achievement.setText(_achievement);
             String msg = "您已成功修改此人物";
+            Hero hero = new Hero(_name, _nickname, bm,_gender, _birthyear, _deadyear, _birthplace, _workfor, _achievement);
             if (isEmpty) {
                 isEmpty = false;
                 msg = "您已成功创建人物"+_name;
+                db.addOneHero(hero);
                 //  add(); 向数据库添加新的
             } else {
+                db.updateOneHero(heroId, hero);
                 //  update(); 向数据库更新
             }
             title.setText(_name+"的资料");
@@ -182,6 +203,7 @@ public class Detail extends AppCompatActivity {
                 alertDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        db.deleteOneHero(heroId);
                         finish();
                         //  回到主页面
                     }
@@ -193,7 +215,7 @@ public class Detail extends AppCompatActivity {
                     }
                 });
                 alertDialog.show();
-                //  删除英雄
+
             }
         });
         img.setOnClickListener(new View.OnClickListener() {
@@ -233,8 +255,8 @@ public class Detail extends AppCompatActivity {
         }
     }
     //加载图片
-    private void showImage(String imaePath){
-        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+    private void showImage(String imagePath){
+        bm = BitmapFactory.decodeFile(imagePath);
         img.setImageBitmap(bm);
     }
     public void vertifyStoragePermissions(Activity activity) {
