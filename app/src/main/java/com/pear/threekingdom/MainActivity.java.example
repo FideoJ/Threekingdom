@@ -1,6 +1,5 @@
 package com.pear.threekingdom;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import android.graphics.Bitmap;
@@ -21,11 +20,29 @@ public class MainActivity extends AppCompatActivity {
     Bitmap.Config conf = Bitmap.Config.ARGB_8888;
     Bitmap img = Bitmap.createBitmap(100, 100, conf);
 
-    Hero hero = new Hero("吕布", "吕奉先", img, "男", "161", "198",
-                         "五原郡九原县（今内蒙古包头）", "董卓",
-                         "诛杀董卓，击破张燕，大败袁术");
-    db.addOneHero(hero);
-    ArrayList<Hero> heroes = db.queryAllHeroes();
+    Hero hero1 = new Hero("吕布", "吕奉先", img, "男", "161", "198",
+            "五原郡九原县（今内蒙古包头）", "董卓",
+            "诛杀董卓，击破张燕，大败袁术");
+    ArrayList<Hero> allHeroes = db.queryAllHeroes();
+    db.addOneHero(hero1);
+    allHeroes = db.queryAllHeroes();
+
+    Hero mHero = db.queryHeroesByName("吕布").get(0);
+    mHero.name = "吕剪刀";
+
+    db.updateOneHero(mHero.hero_id, mHero);
+    allHeroes = db.queryAllHeroes();
+
+    int insertId = db.addOneHero(hero1);
+    allHeroes = db.queryAllHeroes();
+    db.deleteOneHero(insertId);
+    allHeroes = db.queryAllHeroes();
+
+    insertId = db.addOneHero(hero1);
+    allHeroes = db.queryAllHeroes();
+    int[] toDelIds = { insertId, mHero.hero_id };
+    db.deleteHeroes(toDelIds);
+    allHeroes = db.queryAllHeroes();
 
     db.closeDb();
   }
