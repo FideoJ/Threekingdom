@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
+
 import com.pear.threekingdom.entity.Hero;
 
 public class DbManager {
@@ -18,7 +20,7 @@ public class DbManager {
 
   public void closeDb() { db.close(); }
 
-  public void addOneHero(Hero hero) {
+  public int addOneHero(Hero hero) {
     byte[] avatar = DbBitmapUtility.img2Bytes(hero.avatar);
     ContentValues cv = new ContentValues();
 
@@ -32,18 +34,12 @@ public class DbManager {
     cv.put("work_for", hero.work_for);
     cv.put("achievement", hero.achievement);
 
-    db.beginTransaction();
-    try {
-      db.insert(DB_TABLE, null, cv);
-      db.setTransactionSuccessful();
-    } finally {
-      db.endTransaction();
-    }
+    return (int)db.insert(DB_TABLE, null, cv);
   }
 
   public ArrayList<Hero> queryAllHeroes() {
     ArrayList<Hero> heroes = new ArrayList<>();
-    Cursor c = db.rawQuery("SELECT * FROM hero", null);
+    Cursor c = db.rawQuery("SELECT * FROM hero ORDER BY hero_id DESC;", null);
 
     c.moveToFirst();
     while (c.moveToNext()) {
@@ -68,9 +64,9 @@ public class DbManager {
     return heroes;
   }
 
-  public ArrayList<Hero> queryHeroByName(String heroName) {
+  public ArrayList<Hero> queryHeroesByName(String name) {
     ArrayList<Hero> heroes = new ArrayList<>();
-    Cursor c = db.rawQuery("SELECT * FROM hero", null);
+    Cursor c = db.rawQuery("SELECT * FROM hero WHERE name = ? ORDER BY hero_id DESC;", new String[]{name});
 
     c.moveToFirst();
     while (c.moveToNext()) {
@@ -93,5 +89,37 @@ public class DbManager {
     c.close();
 
     return heroes;
+  }
+
+  public void updateOneHero(int hero_id, Hero hero) {
+    byte[] avatar = DbBitmapUtility.img2Bytes(hero.avatar);
+    ContentValues cv = new ContentValues();
+
+    cv.put("name", hero.name);
+    cv.put("alias", hero.alias);
+    cv.put("avatar", avatar);
+    cv.put("gender", hero.gender);
+    cv.put("birth_year", hero.birth_year);
+    cv.put("death_year", hero.death_year);
+    cv.put("native_place", hero.native_place);
+    cv.put("work_for", hero.work_for);
+    cv.put("achievement", hero.achievement);
+
+    db.update(DB_TABLE, cv, "hero_id = ?", new String[]{String.valueOf(hero_id)});
+  }
+
+  public void deleteOneHero(int hero_id) {
+    db.delete(DB_TABLE, "hero_id = ?", new String[]{String.valueOf(hero_id)});
+  }
+
+  public void deleteHeroes(int[] hero_ids) {
+    Integer[] ids = new Integer[hero_ids.length];
+    int i = 0;
+    for (int value : hero_ids) {
+      ids[i++] = value;
+    }
+    String inClause = TextUtils.join(",", ids);
+
+    db.execSQL("DELETE FROM hero WHERE hero_id IN (" + inClause + ");");
   }
 }
