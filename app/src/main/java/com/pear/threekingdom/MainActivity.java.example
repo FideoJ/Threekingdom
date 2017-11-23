@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     db.deleteHeroes(toDelIds);
     allHeroes = db.queryAllHeroes();
 
+    Hero randHero = db.queryOneHeroRandomly();
+
     db.closeDb();
   }
 }

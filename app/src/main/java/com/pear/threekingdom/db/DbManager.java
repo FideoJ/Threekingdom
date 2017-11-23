@@ -41,7 +41,6 @@ public class DbManager {
     ArrayList<Hero> heroes = new ArrayList<>();
     Cursor c = db.rawQuery("SELECT * FROM hero ORDER BY hero_id DESC;", null);
 
-    c.moveToFirst();
     while (c.moveToNext()) {
       Hero hero = new Hero();
       byte[] avatar = c.getBlob(c.getColumnIndex("avatar"));
@@ -68,7 +67,6 @@ public class DbManager {
     ArrayList<Hero> heroes = new ArrayList<>();
     Cursor c = db.rawQuery("SELECT * FROM hero WHERE name = ? ORDER BY hero_id DESC;", new String[]{name});
 
-    c.moveToFirst();
     while (c.moveToNext()) {
       Hero hero = new Hero();
       byte[] avatar = c.getBlob(c.getColumnIndex("avatar"));
@@ -89,6 +87,31 @@ public class DbManager {
     c.close();
 
     return heroes;
+  }
+  public Hero queryOneHeroRandomly() {
+    ArrayList<Hero> heroes = new ArrayList<>();
+    Cursor c = db.rawQuery("SELECT * FROM hero ORDER BY RANDOM() LIMIT 1;", null);
+
+    while (c.moveToNext()) {
+      Hero hero = new Hero();
+      byte[] avatar = c.getBlob(c.getColumnIndex("avatar"));
+
+      hero.hero_id = c.getInt(c.getColumnIndex("hero_id"));
+      hero.name = c.getString(c.getColumnIndex("name"));
+      hero.alias = c.getString(c.getColumnIndex("alias"));
+      hero.avatar = DbBitmapUtility.bytes2Img(avatar);
+      hero.gender = c.getString(c.getColumnIndex("gender"));
+      hero.birth_year = c.getString(c.getColumnIndex("birth_year"));
+      hero.death_year = c.getString(c.getColumnIndex("death_year"));
+      hero.native_place = c.getString(c.getColumnIndex("native_place"));
+      hero.work_for = c.getString(c.getColumnIndex("work_for"));
+      hero.achievement = c.getString(c.getColumnIndex("achievement"));
+
+      heroes.add(hero);
+    }
+    c.close();
+
+    return heroes.get(0);
   }
 
   public void updateOneHero(int hero_id, Hero hero) {
