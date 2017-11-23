@@ -207,16 +207,11 @@
                         android:text="女"
                         />
                     <RadioButton
-                        android:checked="true"
                         android:id="@+id/maleGroupID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="男"/>
                 </RadioGroup>
-                <EditText
-                    style="@style/textStyle2"
-                    android:id="@+id/gender_input"
-                    android:inputType="text"/>
                 <EditText
                     style="@style/textStyle2"
                     android:id="@+id/birthyear_input"

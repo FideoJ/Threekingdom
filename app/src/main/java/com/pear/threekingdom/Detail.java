@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.IdRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.pear.threekingdom.db.DbManager;
@@ -33,17 +36,18 @@ public class Detail extends AppCompatActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
     private ImageView edit, save, img, back;
     private LinearLayout detailLayout, inputLayout ;
-    private EditText nameInput, nicknameInput, genderInput,
+    private EditText nameInput, nicknameInput,
              birthyearInput,deadyearInput, birthplaceInput,workforInput,achievementInput;
     private TextView name, nickname, gender,
             birthyear,deadyear, birthplace,workfor,achievement, text0, title;
+    private RadioGroup group;
     private Button delete;
     private Bitmap bm;
     private int heroId;
-    private boolean isEmpty;
-    private boolean isEdit;
+    private boolean isEmpty, isEdit;
     private DbManager db;
     private String _gender;
+    private RadioButton female, male;
     private static final int IMAGE = 1;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -78,9 +82,18 @@ public class Detail extends AppCompatActivity {
             bm =  BitmapFactory.decodeByteArray(bundle.getByteArray("img"), 0, bundle.getByteArray("img").length);
             img.setImageBitmap(bm);
             heroId = bundle.getInt("hero_id");
+            _gender = bundle.getString("gender");
+            if (_gender.equals("男")) {
+                male.setChecked(true);
+                female.setChecked(false);
+            } else {
+                female.setChecked(true);
+                male.setChecked(false);
+            }
         }
     }
     void init() {
+        _gender = "不详";
         db = new DbManager(this);
         edit = (ImageView)findViewById(R.id.edit);
         save = (ImageView)findViewById(R.id.save);
@@ -88,7 +101,6 @@ public class Detail extends AppCompatActivity {
         inputLayout = (LinearLayout)findViewById(R.id.input_layout);
         nameInput = (EditText)findViewById(R.id.name_input);
         nicknameInput = (EditText)findViewById(R.id.nickname_input);
-        genderInput = (EditText)findViewById(R.id.gender_input);
         birthyearInput = (EditText)findViewById(R.id.birthyear_input);
         deadyearInput = (EditText)findViewById(R.id.deadyear_input);
         birthplaceInput = (EditText)findViewById(R.id.birthplace_input);
@@ -108,6 +120,9 @@ public class Detail extends AppCompatActivity {
         title = (TextView)findViewById(R.id.title);
         back = (ImageView)findViewById(R.id.back);
         bm = ((BitmapDrawable) img.getDrawable()).getBitmap();
+        group = (RadioGroup)findViewById(R.id.radioGroupID);
+        female = (RadioButton)findViewById(R.id.femaleGroupID);
+        male = (RadioButton)findViewById(R.id.maleGroupID);
     }
     //  进入编辑状态
     private void editHero() {
@@ -118,16 +133,15 @@ public class Detail extends AppCompatActivity {
         //  显示输入界面
         detailLayout.setVisibility(View.GONE);
         inputLayout.setVisibility(View.VISIBLE);
-
         text0.setVisibility(View.INVISIBLE);
         nameInput.setText(name.getText());
         nicknameInput.setText(nickname.getText());
-        genderInput.setText(gender.getText());
         birthyearInput.setText(birthyear.getText());
         deadyearInput.setText(deadyear.getText());
         birthplaceInput.setText(birthplace.getText());
         workforInput.setText(workfor.getText());
         achievementInput.setText(achievement.getText());
+
         if (!isEmpty) {
             delete.setVisibility(View.VISIBLE);
         } else {
@@ -139,7 +153,6 @@ public class Detail extends AppCompatActivity {
         isEdit = false;
         String  _name = nameInput.getText().toString();
         String _nickname = nicknameInput.getText().toString();
-        String _gender = genderInput.getText().toString();
         String _birthyear = birthyearInput.getText().toString();
         String _deadyear = deadyearInput.getText().toString();
         String _birthplace = birthplaceInput.getText().toString();
@@ -150,6 +163,24 @@ public class Detail extends AppCompatActivity {
         if (TextUtils.isEmpty(_name)) {
             Toast.makeText(getApplicationContext(), "请输入人物名称", Toast.LENGTH_SHORT).show();
         } else {
+            if (TextUtils.isEmpty(_nickname)) {
+                _nickname = "不详";
+            }
+            if (TextUtils.isEmpty(_birthplace)) {
+                _birthplace= "不详";
+            }
+            if (TextUtils.isEmpty(_birthyear)) {
+                _birthyear = "不详";
+            }
+            if (TextUtils.isEmpty(_deadyear)) {
+                _deadyear = "不详";
+            }
+            if (TextUtils.isEmpty(_workfor)) {
+                _workfor= "不详";
+            }
+            if (TextUtils.isEmpty(_achievement)) {
+                _achievement = "不详";
+            }
             save.setVisibility(View.GONE);
             edit.setVisibility(View.VISIBLE);
             inputLayout.setVisibility(View.GONE);
@@ -230,6 +261,13 @@ public class Detail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                RadioButton rb = (RadioButton)findViewById(checkedId);
+                _gender = rb.getText().toString();
             }
         });
     }
