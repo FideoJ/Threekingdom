@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@mipmap/detail_background">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:padding="10dp">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/back"
+                android:layout_margin="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/edit"
+                android:layout_margin="5dp"
+                android:tag="0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+            <ImageView
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/save"
+                android:layout_margin="5dp"
+                android:tag="0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:visibility="gone"/>
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+            <TextView
+                android:id="@+id/text0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#da0013"
+                android:textSize="20sp"
+                android:text="吕布(161~198)"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img" />
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b5b5b5"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/more" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@id/more"
+                android:text="吕布的资料"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b5b5b5"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="中文名: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="别名: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="性别: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="出生年: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="去世年: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="出生地: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="效力: " />
+                <TextView
+                    style="@style/textStyle1"
+                    android:text="主要成就: " />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/detail_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/nickname"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/gender"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/birthyear"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/deadyear"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/birthplace"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/workfor"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/achievement"
+                    style="@style/textStyle2"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/input_layout"
+                android:layout_weight="3.5"
+                android:orientation="vertical"
+               >
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/name_input"
+                    android:inputType="text" />
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/nickname_input"
+                    android:inputType="text"/>
+                <RadioGroup
+                    android:gravity="center"
+                    android:id="@+id/radioGroupID"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" >
+                    <RadioButton
+                        android:id="@+id/femaleGroupID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        />
+                    <RadioButton
+                        android:id="@+id/maleGroupID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="男"/>
+                </RadioGroup>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/birthyear_input"
+                    android:inputType="text"/>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/deadyear_input"
+                    android:inputType="text"/>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/birthplace_input"
+                    android:inputType="text"/>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/workfor_input"
+                    android:inputType="text"/>
+                <EditText
+                    style="@style/textStyle2"
+                    android:id="@+id/achievement_input"
+                    android:inputType="text"/>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="删除"
+            android:id="@+id/delete"
+            android:textColor="#ffffff"
+            android:background="#da0013"
+            android:visibility="gone"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

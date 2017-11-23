@@ -7,4 +7,5 @@
     <string name="sampleQuestion">Q1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
     <string name="sampleChoice">当然是选择原谅他</string>
     <string name="checkoutResult">查看结果</string>
+    <string name="resultTitle">测试结果</string>
 </resources>
