@@ -60,7 +60,7 @@ public class HeroHelper {
             temp.put(HeroHelper.avatar, l.get(i).avatar);
             temp.put(HeroHelper.hero_id, l.get(i).hero_id);
             temp.put(HeroHelper.achievement, l.get(i).achievement);
-            temp.put(HeroHelper.hero_name_pinyin, ChineseToPinyinHelper.getPinYin(l.get(i).name));
+            temp.put(HeroHelper.hero_name_pinyin, ChineseToPinyinHelper.getInstance().getSelling(l.get(i).name));
             list.add(temp);
         }
         return list;

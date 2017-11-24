@@ -7,6 +7,7 @@ import android.widget.SimpleAdapter;
 
 import com.pear.threekingdom.db.DbManager;
 import com.pear.threekingdom.entity.HeroHelper;
+import com.pear.threekingdom.pinyin.ChineseToPinyinHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         updateListView();
+        System.out.println(ChineseToPinyinHelper.getInstance().getSelling("吴博文"));
     }
     private void updateListView() {
         if (dbManager == null) {
