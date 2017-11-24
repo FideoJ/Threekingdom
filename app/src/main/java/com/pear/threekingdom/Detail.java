@@ -79,7 +79,7 @@ public class Detail extends AppCompatActivity {
             deadyear.setText(bundle.getString("deadyear"));
             birthplace.setText(bundle.getString("native_place"));
             workfor.setText(bundle.getString("work_for"));
-            achievement.setText("achievement");
+            achievement.setText(bundle.getString("achievement"));
             text0.setText(name.getText()+"("+ birthyear.getText() + "~"+ deadyear.getText()+")");
             bm =  BitmapFactory.decodeByteArray(bundle.getByteArray("img"), 0, bundle.getByteArray("img").length);
             img.setImageBitmap(bm);
