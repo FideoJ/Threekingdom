@@ -116,4 +116,5 @@ public class HeroListAdapter extends BaseAdapter{
         }
         this.notifyDataSetChanged();
     }
+
 }
