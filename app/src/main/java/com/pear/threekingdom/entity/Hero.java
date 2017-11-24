@@ -2,6 +2,8 @@ package com.pear.threekingdom.entity;
 
 import android.graphics.Bitmap;
 
+import com.pear.threekingdom.pinyin.ChineseToPinyinHelper;
+
 public class Hero {
   public int hero_id;
   public String name;
@@ -13,6 +15,7 @@ public class Hero {
   public String native_place;
   public String work_for;
   public String achievement;
+  public String pinyin;
 
   public Hero() {
   }
@@ -27,5 +30,6 @@ public class Hero {
     this.native_place = native_place;
     this.work_for = work_for;
     this.achievement = achievement;
+      this.pinyin = ChineseToPinyinHelper.getInstance().getSelling(name);
   }
 }

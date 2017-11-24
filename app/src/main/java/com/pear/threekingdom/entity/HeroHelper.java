@@ -3,7 +3,6 @@ package com.pear.threekingdom.entity;
 import android.os.Bundle;
 
 import com.pear.threekingdom.db.DbBitmapUtility;
-import com.pear.threekingdom.pinyin.ChineseToPinyinHelper;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -27,7 +26,7 @@ public class HeroHelper {
     public static String achievement = "achievement";
     public static String hero_name_pinyin = "hero_name_pinyin";
 
-    public static Bundle toBundle(Hero h) {
+    public static Bundle HeroToBundle(Hero h) {
         Bundle bundle = new Bundle();
         bundle.putString(HeroHelper.name, h.name);
         bundle.putString(HeroHelper.alias, h.alias);
@@ -60,7 +59,7 @@ public class HeroHelper {
             temp.put(HeroHelper.avatar, l.get(i).avatar);
             temp.put(HeroHelper.hero_id, l.get(i).hero_id);
             temp.put(HeroHelper.achievement, l.get(i).achievement);
-            temp.put(HeroHelper.hero_name_pinyin, ChineseToPinyinHelper.getInstance().getSelling(l.get(i).name));
+            temp.put(HeroHelper.hero_name_pinyin, l.get(i).pinyin);
             list.add(temp);
         }
         return list;

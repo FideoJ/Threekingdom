@@ -7,13 +7,13 @@
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+        <RadioButton
+            android:id="@+id/radio_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/radio_button"/>
-
+            android:button="@null"
+            android:drawableLeft="@drawable/radio_button_selector"/>
         <ImageView
             android:id="@+id/avatar"
             android:layout_width="55dp"
