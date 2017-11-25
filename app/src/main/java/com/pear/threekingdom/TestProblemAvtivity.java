@@ -89,6 +89,7 @@ public class TestProblemAvtivity extends AppCompatActivity {
                         TestProblemAvtivity.this.finish();
                     }
                 });
+                dialogBuilder.show();
             }
         });
     }
