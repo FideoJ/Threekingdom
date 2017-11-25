@@ -110,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
     private void toMutipleDeleteMode() {
         adapter.setRadioButtonAppear(true);
         deleteSelectedButton.setVisibility(View.VISIBLE);
