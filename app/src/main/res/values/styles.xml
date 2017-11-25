@@ -44,7 +44,7 @@
 
     <style name="testTitleStyle">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">15pt</item>
+        <item name="android:textSize">13pt</item>
     </style>
 
     <style name="testIntroStyle">
@@ -54,7 +54,7 @@
 
     <style name="testStartButtonStyle">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">15pt</item>
+        <item name="android:textSize">10pt</item>
     </style>
 
     <style name="testProblemStyle">

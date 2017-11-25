@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, Detail.class));
                                 break;
                             case R.id.similar_hero_test:
-                                System.out.println("similar hero test");
+                                startActivity(new Intent(MainActivity.this, TestTitleActivity.class));
                                 break;
                             default:
                                 break;

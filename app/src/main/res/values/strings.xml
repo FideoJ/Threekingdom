@@ -3,12 +3,60 @@
     <string name="testTitle">测测你是三国演义中的谁</string>
     <string name="startTest">开始测试</string>
     <string name="testIntroduction">!!!!!!!!!!!!##############!!!!!!!!!!!!!!!################!!!!!!!!!!!!!!!!######</string>
-    <string name="problemNo">第x题</string>
-    <string name="sampleQuestion">Q1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice">当然是选择原谅他</string>
+
+
     <string name="checkoutResult">查看结果</string>
+    <string name="nextProblem">下一题</string>
     <string name="resultTitle">测试结果</string>
     <string name="deleteSelected">删除选中项</string>
     <string name="add_hero">添加英雄</string>
     <string name="similar_hero_test">相似度英雄测试</string>
+    <string name="pleaseChooseOneChoice">请选择一个选项</string>
+
+    <string name="confirmQuitTestTitle">确定退出测试</string>
+    <string name="confirmQuitTestMsg">是否退出</string>
+    <string name="positive">确定</string>
+    <string name="negative">取消</string>
+
+    <string name="problemNo">第x题</string>
+
+    <string name="sampleQuestion1">Q1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
+    <string name="sampleChoice_1_1">当然是选择原谅他</string>
+    <string name="sampleChoice_1_2">当然是选择原谅他</string>
+    <string name="sampleChoice_1_3">当然是选择原谅他</string>
+    <string name="sampleChoice_1_4">当然是选择原谅他</string>
+
+    <string name="sampleQuestion2">Q2:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
+    <string name="sampleChoice_2_1">当然是选择原谅他</string>
+    <string name="sampleChoice_2_2">当然是选择原谅他</string>
+    <string name="sampleChoice_2_3">当然是选择原谅他</string>
+    <string name="sampleChoice_2_4">当然是选择原谅他</string>
+
+    <string name="sampleQuestion3">Q3:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
+    <string name="sampleChoice_3_1">当然是选择原谅他</string>
+    <string name="sampleChoice_3_2">当然是选择原谅他</string>
+    <string name="sampleChoice_3_3">当然是选择原谅他</string>
+    <string name="sampleChoice_3_4">当然是选择原谅他</string>
+
+
+    <string name="sampleQuestion4">Q4:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
+    <string name="sampleChoice_4_1">当然是选择原谅他</string>
+    <string name="sampleChoice_4_2">当然是选择原谅他</string>
+    <string name="sampleChoice_4_3">当然是选择原谅他</string>
+    <string name="sampleChoice_4_4">当然是选择原谅他</string>
+
+
+    <string name="sampleQuestion5">Q5:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
+    <string name="sampleChoice_5_1">当然是选择原谅他</string>
+    <string name="sampleChoice_5_2">当然是选择原谅他</string>
+    <string name="sampleChoice_5_3">当然是选择原谅他</string>
+    <string name="sampleChoice_5_4">当然是选择原谅他</string>
+
+
+    <string name="sampleQuestion6">Q6:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
+    <string name="sampleChoice_6_1">当然是选择原谅他</string>
+    <string name="sampleChoice_6_2">当然是选择原谅他</string>
+    <string name="sampleChoice_6_3">当然是选择原谅他</string>
+    <string name="sampleChoice_6_4">当然是选择原谅他</string>
+
 </resources>

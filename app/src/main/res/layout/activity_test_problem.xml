@@ -47,9 +47,10 @@
         android:layout_marginRight="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:text="@string/sampleQuestion"/>
+        android:text="@string/sampleQuestion1"/>
 
     <RadioGroup
+        android:id="@+id/choice_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/problem"
@@ -57,39 +58,43 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="80dp">
         <RadioButton
+            android:id="@+id/choice_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:drawablePadding="20dp"
-            android:text="@string/sampleChoice"
+            android:text="@string/sampleChoice_1_1"
             android:button="@null"
             android:drawableLeft="@drawable/radio_button_selector"/>
         <RadioButton
+            android:id="@+id/choice_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:drawablePadding="20dp"
-            android:text="@string/sampleChoice"
+            android:text="@string/sampleChoice_1_2"
             android:button="@null"
             android:drawableLeft="@drawable/radio_button_selector"/>
         <RadioButton
+            android:id="@+id/choice_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:drawablePadding="20dp"
-            android:text="@string/sampleChoice"
+            android:text="@string/sampleChoice_1_3"
             android:button="@null"
             android:drawableLeft="@drawable/radio_button_selector"/>
         <RadioButton
+            android:id="@+id/choice_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:drawablePadding="20dp"
-            android:text="@string/sampleChoice"
+            android:text="@string/sampleChoice_1_4"
             android:button="@null"
             android:drawableLeft="@drawable/radio_button_selector"/>
     </RadioGroup>
