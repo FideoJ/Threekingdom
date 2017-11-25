@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+
 import android.widget.TextView;
 
 import com.pear.threekingdom.db.DbManager;
@@ -56,7 +57,7 @@ public class HeroListAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.listview_hero, null);
         }
@@ -64,18 +65,24 @@ public class HeroListAdapter extends BaseAdapter{
         TextView name = (TextView)view.findViewById(R.id.hero_name);
         TextView pinyin = (TextView)view.findViewById(R.id.hero_pinyin);
         TextView gender = (TextView)view.findViewById(R.id.hero_gender);
-        RadioButton radioButton = (RadioButton)view.findViewById(R.id.radio_button);
+        CheckBox checkBox = (CheckBox) view.findViewById(R.id.radio_button);
 
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickItem(i);
+            }
+        });
         avatarView.setImageBitmap(data.get(i).avatar);
         name.setText(data.get(i).name);
         pinyin.setText(data.get(i).pinyin);
         gender.setText(data.get(i).gender);
 
         if (whetherRadioButtonAppear == true) {
-            radioButton.setChecked(false);
-            radioButton.setVisibility(View.VISIBLE);
+            checkBox.setChecked(false);
+            checkBox.setVisibility(View.VISIBLE);
         } else {
-            radioButton.setVisibility(View.INVISIBLE);
+            checkBox.setVisibility(View.INVISIBLE);
         }
         return view;
     }
@@ -112,9 +119,22 @@ public class HeroListAdapter extends BaseAdapter{
         if (name == null) {
             data = dbManager.queryAllHeroes();
         } else {
-            data = dbManager.queryHeroesByName(name);
+            if (name.isEmpty()) {
+                data = dbManager.queryAllHeroes();
+            } else {
+                data = dbManager.queryHeroesByName(name);
+            }
         }
         this.notifyDataSetChanged();
     }
 
+    public boolean whetherInMutipleSelected() {
+        return whetherRadioButtonAppear;
+    }
+
+    public void clickItem(int position) {
+        if (whetherRadioButtonAppear == true) {
+            whetherDelete[position] = !whetherDelete[position];
+        }
+    }
 }

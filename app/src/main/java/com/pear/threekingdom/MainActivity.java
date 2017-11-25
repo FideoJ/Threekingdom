@@ -3,8 +3,11 @@ package com.pear.threekingdom;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.pear.threekingdom.db.DbManager;
@@ -14,7 +17,9 @@ import com.pear.threekingdom.entity.HeroHelper;
 public class MainActivity extends AppCompatActivity {
     private DbManager dbManager;
     private HeroListAdapter adapter;
-    ListView listView;
+    private Button deleteSelectedButton;
+    private ListView listView;
+    private EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         dbManager = new DbManager(MainActivity.this);
         adapter = new HeroListAdapter(dbManager, MainActivity.this, null);
         listView.setAdapter(adapter);
+        deleteSelectedButton = (Button)findViewById(R.id.deleteSelected);
+        deleteSelectedButton.setVisibility(View.INVISIBLE);
+        editText = (EditText)findViewById(R.id.search_edittext);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -32,5 +40,55 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (adapter.whetherInMutipleSelected() == false) {
+                    toMutipleDeleteMode();
+                }
+                return true;
+            }
+        });
+        deleteSelectedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getVisibility() == View.VISIBLE) {
+                    toNormalNode();
+                }
+            }
+        });
+
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (editText.getCompoundDrawables()[2] == null) {
+                    return  false;
+                }
+                if (motionEvent.getAction() != MotionEvent.ACTION_UP) {
+                    return false;
+                }
+                if (motionEvent.getX() > editText.getWidth() - editText.getCompoundDrawables()[2].getBounds().width()) {
+                    // touch on search button
+                    adapter.searchHerosByName(editText.getText().toString());
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void toMutipleDeleteMode() {
+        adapter.setRadioButtonAppear(true);
+        deleteSelectedButton.setVisibility(View.VISIBLE);
+        editText.setText("");
+        editText.setVisibility(View.INVISIBLE);
+    }
+
+    private void toNormalNode() {
+        adapter.confirmDeleteHeros();
+        deleteSelectedButton.setVisibility(View.INVISIBLE);
+        editText.setVisibility(View.VISIBLE);
     }
 }

@@ -8,4 +8,5 @@
     <string name="sampleChoice">当然是选择原谅他</string>
     <string name="checkoutResult">查看结果</string>
     <string name="resultTitle">测试结果</string>
+    <string name="deleteSelected">删除选中项</string>
 </resources>
