@@ -42,8 +42,9 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="300dp"
-        android:layout_height="450dp"
+        android:layout_height="510dp"
         android:padding="10dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/listview_border"
         app:layout_constraintTop_toBottomOf="@+id/search_bar_background"
         app:layout_constraintBottom_toBottomOf="parent"
