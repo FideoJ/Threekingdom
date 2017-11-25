@@ -3,11 +3,14 @@ package com.pear.threekingdom;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.pear.threekingdom.db.DbManager;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button deleteSelectedButton;
     private ListView listView;
     private EditText editText;
+    private ImageView moreButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         deleteSelectedButton = (Button)findViewById(R.id.deleteSelected);
         deleteSelectedButton.setVisibility(View.INVISIBLE);
         editText = (EditText)findViewById(R.id.search_edittext);
+        moreButton = (ImageView)findViewById(R.id.more_button);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,6 +80,32 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+        moreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.main_activity_menu, popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.add_hero:
+                                startActivity(new Intent(MainActivity.this, Detail.class));
+                                break;
+                            case R.id.similar_hero_test:
+                                System.out.println("similar hero test");
+                                break;
+                            default:
+                                break;
+                        }
+                        return true;
+                    }
+                });
+
+                popupMenu.show();
             }
         });
     }

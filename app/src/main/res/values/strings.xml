@@ -9,4 +9,6 @@
     <string name="checkoutResult">查看结果</string>
     <string name="resultTitle">测试结果</string>
     <string name="deleteSelected">删除选中项</string>
+    <string name="add_hero">添加英雄</string>
+    <string name="similar_hero_test">相似度英雄测试</string>
 </resources>
