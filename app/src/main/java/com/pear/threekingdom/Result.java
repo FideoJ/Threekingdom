@@ -40,8 +40,8 @@ public class Result extends AppCompatActivity {
         DbManager db = new DbManager(this);
         Hero hero = db.queryOneHeroRandomly();
         String msg = "你是"+hero.name + ",别名"+ hero.alias + ",性别:" +hero.gender
-                + "。生于"+hero.birth_year+ "年，卒于"+ hero.death_year
-                +"年。在世时为"+hero.work_for+"效力。主要成就："+hero.achievement;
+                + "。\n生于"+hero.birth_year+ "年，卒于"+ hero.death_year
+                +"年。在世时为"+hero.work_for+"效力。\n主要成就："+hero.achievement;
         result.setText(msg);
         img.setImageBitmap(hero.avatar);
     }
