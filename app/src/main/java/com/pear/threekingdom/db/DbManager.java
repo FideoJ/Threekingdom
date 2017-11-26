@@ -9,6 +9,12 @@ import android.text.TextUtils;
 
 import com.pear.threekingdom.entity.Hero;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 public class DbManager {
   private static final String DB_TABLE = "hero";
   private SQLiteDatabase db;
@@ -144,5 +150,17 @@ public class DbManager {
     String inClause = TextUtils.join(",", ids);
 
     db.execSQL("DELETE FROM hero WHERE hero_id IN (" + inClause + ");");
+  }
+
+  public void insertHeroesFromFile(Context context, int resourceId) throws IOException {
+    InputStream insertsStream = context.getResources().openRawResource(resourceId);
+    BufferedReader insertReader = new BufferedReader(new InputStreamReader(insertsStream));
+
+    while (insertReader.ready()) {
+      String insertStmt = insertReader.readLine();
+      this.db.execSQL(insertStmt);
+      result++;
+    }
+    insertReader.close();
   }
 }
