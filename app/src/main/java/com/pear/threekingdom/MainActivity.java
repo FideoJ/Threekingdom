@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.updateDataWhenResume();
         if (prefs.getBoolean("firstrun", true)) {
             try {
                 dbManager.insertHeroesFromFile(this, R.raw.insert_heroes);
@@ -131,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
             }
             prefs.edit().putBoolean("firstrun", false).commit();
         }
+        adapter.updateDataWhenResume();
     }
 
     private void toMutipleDeleteMode() {
