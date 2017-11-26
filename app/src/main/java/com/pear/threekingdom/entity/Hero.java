@@ -30,6 +30,6 @@ public class Hero {
     this.native_place = native_place;
     this.work_for = work_for;
     this.achievement = achievement;
-      this.pinyin = ChineseToPinyinHelper.getInstance().getSelling(name);
+    this.pinyin = ChineseToPinyinHelper.getInstance().getSelling(name);
   }
 }
