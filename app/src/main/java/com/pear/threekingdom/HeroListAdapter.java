@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-
 import android.widget.TextView;
 
 import com.pear.threekingdom.db.DbManager;
@@ -75,6 +74,7 @@ public class HeroListAdapter extends BaseAdapter{
         });
         avatarView.setImageBitmap(data.get(i).avatar);
         name.setText(data.get(i).name);
+        // data.get(i).pinyin = ChineseToPinyinHelper.getInstance().getSelling(data.get(i).name);
         pinyin.setText(data.get(i).pinyin);
         gender.setText(data.get(i).gender);
 

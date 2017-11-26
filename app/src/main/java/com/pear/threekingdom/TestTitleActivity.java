@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by bowenwu on 2017/11/25.
@@ -15,6 +16,7 @@ public class TestTitleActivity extends AppCompatActivity {
 
     ImageView back;
     Button startButton;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +38,8 @@ public class TestTitleActivity extends AppCompatActivity {
                 TestTitleActivity.this.finish();
             }
         });
+
+        textView = (TextView)findViewById(R.id.test_introduce);
+        textView.setText(getResources().getString(R.string.testIntroduction));
     }
 }
