@@ -107,6 +107,9 @@ public class TestProblemAvtivity extends AppCompatActivity {
             }
             problem.setText(getResources().getString(problemID[problemNo]));
             problemTitle.setText("第" + Integer.toString(problemNo + 1) + "题");
+            for (int i = 0; i < 4; ++i) {
+                choiceButton[i].setText(getResources().getString(choiceID[problemNo][i]));
+            }
             radioGroup.clearCheck();
         } else {
             // go to result
