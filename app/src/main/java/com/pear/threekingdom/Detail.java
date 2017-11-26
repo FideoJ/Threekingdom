@@ -202,7 +202,7 @@ public class Detail extends AppCompatActivity {
             if (isEmpty) {
                 isEmpty = false;
                 msg = "您已成功创建人物"+_name;
-                db.addOneHero(hero);
+                heroId = db.addOneHero(hero);
                 //  add(); 向数据库添加新的
             } else {
                 db.updateOneHero(heroId, hero);
