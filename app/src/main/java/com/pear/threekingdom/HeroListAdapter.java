@@ -89,8 +89,8 @@ public class HeroListAdapter extends BaseAdapter{
 
     @Override
     public void notifyDataSetChanged() {
+        data = dbManager.queryAllHeroes();
         super.notifyDataSetChanged();
-
     }
 
     public void setRadioButtonAppear(boolean t) {
