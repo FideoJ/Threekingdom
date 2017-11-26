@@ -35,6 +35,7 @@ public class TestProblemAvtivity extends AppCompatActivity {
     Button nextButton;
     ImageView backButton;
     TextView problem;
+    TextView problemTitle;
 
     RadioButton[] choiceButton = {null, null, null, null};
     @Override
@@ -49,6 +50,7 @@ public class TestProblemAvtivity extends AppCompatActivity {
         choiceButton[3] = (RadioButton)findViewById(R.id.choice_3);
 
         nextButton = (Button)findViewById(R.id.checkout_result_button);
+        problemTitle = (TextView)findViewById(R.id.problemNo);
 
         backButton = (ImageView) findViewById(R.id.back_button);
         radioGroup = (RadioGroup)findViewById(R.id.choice_group);
@@ -104,6 +106,7 @@ public class TestProblemAvtivity extends AppCompatActivity {
                 nextButton.setText(getResources().getString(R.string.checkoutResult));
             }
             problem.setText(getResources().getString(problemID[problemNo]));
+            problemTitle.setText("第" + Integer.toString(problemNo + 1) + "题");
             radioGroup.clearCheck();
         } else {
             // go to result

@@ -2,7 +2,7 @@
     <string name="app_name">ThreeKingdom</string>
     <string name="testTitle">测测你是三国演义中的谁</string>
     <string name="startTest">开始测试</string>
-    <string name="testIntroduction">!!!!!!!!!!!!##############!!!!!!!!!!!!!!!################!!!!!!!!!!!!!!!!######</string>
+    <string name="testIntroduction">东汉末年，世分三国，烽火连天，战不休。正所谓乱世铸就英雄，三国正是这样一个英雄辈出的时代。每给人心中都有一个英雄梦，虽不能身临其境，但通过这个测试，你或许可以找到三国中，你的前世。是那亦雄亦奸 、功过是非任评说的曹操？还是那鞠躬尽瘁、 出师未捷万古哀的诸葛亮？或者你是国色流离、资貌绝伦的小乔，亦或是那巾帼不让须眉的孙尚香？</string>
 
 
     <string name="checkoutResult">查看结果</string>
@@ -20,43 +20,43 @@
 
     <string name="problemNo">第x题</string>
 
-    <string name="sampleQuestion1">Q1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice_1_1">当然是选择原谅他</string>
-    <string name="sampleChoice_1_2">当然是选择原谅他</string>
-    <string name="sampleChoice_1_3">当然是选择原谅他</string>
-    <string name="sampleChoice_1_4">当然是选择原谅他</string>
+    <string name="sampleQuestion1">Q1:您的年龄?</string>
+    <string name="sampleChoice_1_1">0-20</string>
+    <string name="sampleChoice_1_2">21-30</string>
+    <string name="sampleChoice_1_3">31-40</string>
+    <string name="sampleChoice_1_4">40以上</string>
 
-    <string name="sampleQuestion2">Q2:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice_2_1">当然是选择原谅他</string>
-    <string name="sampleChoice_2_2">当然是选择原谅他</string>
-    <string name="sampleChoice_2_3">当然是选择原谅他</string>
-    <string name="sampleChoice_2_4">当然是选择原谅他</string>
+    <string name="sampleQuestion2">Q2:情人节有人送了一大束玫瑰给你，你会将花摆在屋子哪里？</string>
+    <string name="sampleChoice_2_1">卧室床头柜上</string>
+    <string name="sampleChoice_2_2">客厅茶几上</string>
+    <string name="sampleChoice_2_3">门口鞋柜上</string>
+    <string name="sampleChoice_2_4">窗台上</string>
 
-    <string name="sampleQuestion3">Q3:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice_3_1">当然是选择原谅他</string>
-    <string name="sampleChoice_3_2">当然是选择原谅他</string>
-    <string name="sampleChoice_3_3">当然是选择原谅他</string>
-    <string name="sampleChoice_3_4">当然是选择原谅他</string>
-
-
-    <string name="sampleQuestion4">Q4:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice_4_1">当然是选择原谅他</string>
-    <string name="sampleChoice_4_2">当然是选择原谅他</string>
-    <string name="sampleChoice_4_3">当然是选择原谅他</string>
-    <string name="sampleChoice_4_4">当然是选择原谅他</string>
+    <string name="sampleQuestion3">Q3:你觉得一个人富裕起来的首要条件时?</string>
+    <string name="sampleChoice_3_1">个人能力</string>
+    <string name="sampleChoice_3_2">客厅茶几上</string>
+    <string name="sampleChoice_3_3">门口鞋柜上</string>
+    <string name="sampleChoice_3_4">窗台上</string>
 
 
-    <string name="sampleQuestion5">Q5:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice_5_1">当然是选择原谅他</string>
-    <string name="sampleChoice_5_2">当然是选择原谅他</string>
-    <string name="sampleChoice_5_3">当然是选择原谅他</string>
-    <string name="sampleChoice_5_4">当然是选择原谅他</string>
+    <string name="sampleQuestion4">Q4:你会这样写自己的墓志铭?</string>
+    <string name="sampleChoice_4_1">来都来了，磕一个吧</string>
+    <string name="sampleChoice_4_2">生活没有给他/她足够的爱</string>
+    <string name="sampleChoice_4_3">他/她本该得到更多的爱</string>
+    <string name="sampleChoice_4_4">人们没有给他/她足够的爱</string>
 
 
-    <string name="sampleQuestion6">Q6:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx?</string>
-    <string name="sampleChoice_6_1">当然是选择原谅他</string>
-    <string name="sampleChoice_6_2">当然是选择原谅他</string>
-    <string name="sampleChoice_6_3">当然是选择原谅他</string>
-    <string name="sampleChoice_6_4">当然是选择原谅他</string>
+    <string name="sampleQuestion5">Q5:在你准备进电梯时，它刚好升了上去，你只差那么一小步。没办法，只好等下一趟了。 在等待的过程中，你通常会做什么呢?</string>
+    <string name="sampleChoice_5_1">一直盯着电梯的按钮，并且按了好几次</string>
+    <string name="sampleChoice_5_2">双脚踏来踏去，不停地发出声响</string>
+    <string name="sampleChoice_5_3">朝上看，或是看周围的告示板</string>
+    <string name="sampleChoice_5_4">向下看</string>
+
+
+    <string name="sampleQuestion6">Q6:不想在外面吃饭时你会带什么便当上班?</string>
+    <string name="sampleChoice_6_1">三明治</string>
+    <string name="sampleChoice_6_2">中式料理</string>
+    <string name="sampleChoice_6_3">炒饭或炒粉</string>
+    <string name="sampleChoice_6_4">烤饼干</string>
 
 </resources>
