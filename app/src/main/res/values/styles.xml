@@ -1,11 +1,69 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="MyPopupMenuStyle">
+        <item name="android:itemBackground">@color/colorGray</item>
+    </style>
+    <style name="textStyle1">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="textStyle2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_weight">3.5</item>
+    </style>
 
+    <style name="nameStyle">
+        <item name="android:textColor">@color/nameColor</item>
+        <item name="android:textSize">10pt</item>
+    </style>
+
+    <style name="pinyinStyle">
+        <item name="android:textColor">@color/pinyinColor</item>
+        <item name="android:textSize">7pt</item>
+    </style>
+
+    <style name="genderStyle">
+        <item name="android:textSize">7pt</item>
+        <item name="android:textColor">@color/pinyinColor</item>
+    </style>
+
+    <style name="typeStyle">
+        <item name="android:textSize">7pt</item>
+        <item name="android:textColor">@color/pinyinColor</item>
+    </style>
+
+    <style name="testTitleStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">13pt</item>
+    </style>
+
+    <style name="testIntroStyle">
+        <item name="android:textSize">7pt</item>
+        <item name="android:textColor">@color/pinyinColor</item>
+    </style>
+
+    <style name="testStartButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10pt</item>
+    </style>
+
+    <style name="testProblemStyle">
+        <item name="android:textSize">15pt</item>
+        <item name="android:textColor">@color/pinyinColor</item>
+    </style>
+
+    <style name="deleteSelectedButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10pt</item>
+    </style>
 </resources>
