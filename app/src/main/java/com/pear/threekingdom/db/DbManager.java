@@ -166,7 +166,6 @@ public class DbManager {
     while (insertReader.ready()) {
       String insertStmt = insertReader.readLine();
       this.db.execSQL(insertStmt);
-      result++;
     }
     insertReader.close();
   }
