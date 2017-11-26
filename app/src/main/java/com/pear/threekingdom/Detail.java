@@ -72,13 +72,15 @@ public class Detail extends AppCompatActivity {
         } else {
             isEmpty = false;
             name.setText(bundle.getString("name"));
+            title.setText(name.getText()+"的资料");
             nickname.setText(bundle.getString("alias"));
             gender.setText(bundle.getString("gender"));
             birthyear.setText(bundle.getString("birthyear"));
             deadyear.setText(bundle.getString("deadyear"));
             birthplace.setText(bundle.getString("native_place"));
             workfor.setText(bundle.getString("work_for"));
-            achievement.setText("achievement");
+            achievement.setText(bundle.getString("achievement"));
+            text0.setText(name.getText()+"("+ birthyear.getText() + "~"+ deadyear.getText()+")");
             bm =  BitmapFactory.decodeByteArray(bundle.getByteArray("img"), 0, bundle.getByteArray("img").length);
             img.setImageBitmap(bm);
             heroId = bundle.getInt("hero_id");
@@ -207,7 +209,7 @@ public class Detail extends AppCompatActivity {
                 //  update(); 向数据库更新
             }
             title.setText(_name+"的资料");
-            text0.setText(_name);
+            text0.setText(_name+"("+ _birthyear + "~"+ _deadyear+")");
             text0.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
         }

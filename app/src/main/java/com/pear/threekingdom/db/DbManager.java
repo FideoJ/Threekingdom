@@ -19,12 +19,12 @@ public class DbManager {
   public DbManager(Context context) {
     DbHelper helper = new DbHelper(context);
     db = helper.getWritableDatabase();
-    this.addOneHero(new Hero("sdf", "dsf", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
+   /* this.addOneHero(new Hero("sdf", "dsf", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
             "hsdjlf", "jskdl", "jsdlf"));
     this.addOneHero(new Hero("dsf", "sdf", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
             "hsdjlf", "jskdl", "jsdlf"));
     this.addOneHero(new Hero("sdf", "sdfe", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
-            "hsdjlf", "jskdl", "jsdlf"));
+            "hsdjlf", "jskdl", "jsdlf"));*/
   }
 
   public void closeDb() { db.close(); }
