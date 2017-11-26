@@ -104,12 +104,7 @@ public class TestProblemAvtivity extends AppCompatActivity {
                 nextButton.setText(getResources().getString(R.string.checkoutResult));
             }
             problem.setText(getResources().getString(problemID[problemNo]));
-            for (int i = 0; i < 4; ++i) {
-                // set new problem choice
-                choiceButton[i].setText(getResources().getString(choiceID[problemNo][i]));
-                // set radio button to unchecked
-                choiceButton[i].setChecked(false);
-            }
+            radioGroup.clearCheck();
         } else {
             // go to result
             startActivity(new Intent(TestProblemAvtivity.this, Result.class));
