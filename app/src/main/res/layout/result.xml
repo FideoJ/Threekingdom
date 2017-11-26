@@ -45,7 +45,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
-        android:id="@+id/test_introduce"
+        android:id="@+id/result"
         style="@style/testIntroStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -209,7 +209,7 @@ public class Detail extends AppCompatActivity {
                 //  update(); 向数据库更新
             }
             title.setText(_name+"的资料");
-            text0.setText(_name);
+            text0.setText(_name+"("+ _birthyear + "~"+ _deadyear+")");
             text0.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
         }
