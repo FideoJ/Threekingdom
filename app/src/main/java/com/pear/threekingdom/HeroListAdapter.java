@@ -89,7 +89,6 @@ public class HeroListAdapter extends BaseAdapter{
 
     @Override
     public void notifyDataSetChanged() {
-        this.searchHerosByName(filter);
         super.notifyDataSetChanged();
     }
 
@@ -126,6 +125,7 @@ public class HeroListAdapter extends BaseAdapter{
                 data = dbManager.queryHeroesByName(name);
             }
         }
+        this.notifyDataSetChanged();
     }
 
     public boolean whetherInMutipleSelected() {
@@ -136,5 +136,9 @@ public class HeroListAdapter extends BaseAdapter{
         if (whetherRadioButtonAppear == true) {
             whetherDelete[position] = !whetherDelete[position];
         }
+    }
+
+    public void updateDataWhenResume() {
+        this.searchHerosByName(filter);
     }
 }
