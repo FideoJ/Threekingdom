@@ -1,6 +1,10 @@
 package com.pear.threekingdom;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
@@ -17,8 +21,11 @@ import com.pear.threekingdom.db.DbManager;
 import com.pear.threekingdom.entity.Hero;
 import com.pear.threekingdom.entity.HeroHelper;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
     private DbManager dbManager;
+    SharedPreferences prefs = null;
     private HeroListAdapter adapter;
     private Button deleteSelectedButton;
     private ListView listView;
@@ -30,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = (ListView)findViewById(R.id.heros_list);
         dbManager = new DbManager(MainActivity.this);
+        prefs = getSharedPreferences("com.pear.ThreeKingdom", MODE_PRIVATE);
+
         adapter = new HeroListAdapter(dbManager, MainActivity.this, null);
         listView.setAdapter(adapter);
         deleteSelectedButton = (Button)findViewById(R.id.deleteSelected);
@@ -114,6 +123,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.updateDataWhenResume();
+        if (prefs.getBoolean("firstrun", true)) {
+            try {
+                dbManager.insertHeroesFromFile(this, R.raw.insert_heroes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            prefs.edit().putBoolean("firstrun", false).commit();
+        }
     }
 
     private void toMutipleDeleteMode() {
