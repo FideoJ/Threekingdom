@@ -1,12 +1,13 @@
 package com.pear.threekingdom.db;
 
-import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 
+import com.pear.threekingdom.R;
 import com.pear.threekingdom.entity.Hero;
 
 import java.io.BufferedReader;
@@ -22,6 +23,12 @@ public class DbManager {
   public DbManager(Context context) {
     DbHelper helper = new DbHelper(context);
     db = helper.getWritableDatabase();
+   /* this.addOneHero(new Hero("sdf", "dsf", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
+            "hsdjlf", "jskdl", "jsdlf"));
+    this.addOneHero(new Hero("dsf", "sdf", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
+            "hsdjlf", "jskdl", "jsdlf"));
+    this.addOneHero(new Hero("sdf", "sdfe", BitmapFactory.decodeResource(context.getResources(), R.mipmap.mrbai), "nan", "skdjf", "jskdlf",
+            "hsdjlf", "jskdl", "jsdlf"));*/
   }
 
   public void closeDb() { db.close(); }

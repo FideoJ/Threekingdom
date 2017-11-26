@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.heros_list);
         dbManager = new DbManager(MainActivity.this);
         prefs = getSharedPreferences("com.pear.ThreeKingdom", MODE_PRIVATE);
+
         adapter = new HeroListAdapter(dbManager, MainActivity.this, null);
         listView.setAdapter(adapter);
         deleteSelectedButton = (Button)findViewById(R.id.deleteSelected);
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+        adapter.updateDataWhenResume();
         if (prefs.getBoolean("firstrun", true)) {
             try {
                 dbManager.insertHeroesFromFile(this, R.raw.insert_heroes);

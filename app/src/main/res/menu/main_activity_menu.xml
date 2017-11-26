@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/add_hero"
+        android:title="@string/add_hero"
+        />
+    <item
+        android:id="@+id/similar_hero_test"
+        android:title="@string/similar_hero_test"/>
+</menu>
